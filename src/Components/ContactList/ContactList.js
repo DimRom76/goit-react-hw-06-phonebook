@@ -22,7 +22,6 @@ function ContactList({ contacts, onDeleteContact }) {
 }
 
 ContactList.propTypes = {
-  filter: PropTypes.string,
   contacts: PropTypes.array.isRequired,
   onDeleteContact: PropTypes.func.isRequired,
 };
@@ -36,8 +35,8 @@ const getVisibleContacts = (allContacts, filter) => {
   });
 };
 
-const mapStateToProps = ({ contacts: { contacts, filter } }) => ({
-  contacts: getVisibleContacts(contacts, filter),
+const mapStateToProps = ({ contacts: { items, filter } }) => ({
+  contacts: getVisibleContacts(items, filter),
 });
 
 const mapDispatchToProps = dispatch => ({
