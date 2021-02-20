@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import contactsAction from '../../redux/contacts/contacts-actions';
 
-function Filter({ value, handleInput }) {
+function Filter({ value, onChange }) {
   return (
     <>
       <h3>Find contacts by name</h3>
@@ -11,14 +11,14 @@ function Filter({ value, handleInput }) {
         type="text"
         name="filter"
         value={value}
-        onInput={handleInput}
+        onChange={onChange}
       ></input>
     </>
   );
 }
 
 Filter.propTypes = {
-  handleInput: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   value: PropTypes.string,
 };
 
@@ -27,7 +27,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleInput: e => dispatch(contactsAction.changeFilter(e.target.value)),
+  onChange: e => dispatch(contactsAction.changeFilter(e.target.value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);
